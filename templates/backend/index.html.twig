@@ -1,0 +1,41 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Mimis Backend{% endblock %}
+
+{% block body %}
+
+{# <img src="{{ asset('images/shoes.jpeg') }}" class="img-fluid mt-3"> #}
+
+    <div class="container mt-5">
+        <h2 class="text-center mt-2 mb-5 fw-light">Mimis Backend</h2>
+    
+        <div class="row">
+            {% for product in products %}
+                <div class="col-10 offset-1 col-sm-6 offset-sm-0 col-md-4 offset-md-0">
+                    <div class="card mb-4 border-0 h-100 " >
+                        
+                        <div class="card-body shadow bg-light rounded-3 mb-5 bg-light">
+                            <h5 class="card-title text-center ">{{ product.name }}</h5>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{ product.image }}" class="card-img-top  mb-4 mt-2 style"  alt="...">
+                            </div>
+                            <div class="d-flex justify-content-center ">
+                                <a href="/update/{{ product.id }}"><button class="btn btn-outline-success btn-sm fw-light rounded-circle mx-2" title="edit"><i class='far fa-edit'></i></button></a>
+                                <a href="/details/{{ product.id }}" class="btn btn-outline-warning btn-sm fw-light rounded-circle"><i class='fas fa-info-circle'></i></a>
+                                <a href="/delete/{{ product.id }}" onclick="return confirm('Are you sure you want to delete this?')" class="btn btn-outline-danger btn-sm fw-light rounded-circle mx-2"><i class='far fa-trash-alt'></i></a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

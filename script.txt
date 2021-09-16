@@ -1,0 +1,77 @@
+
+build a symfony project:
+composer create-project symfony/website-skeleton my_project_name
+!!!!!  cd my_project_name   !!!!!
+
+start symfony:
+php -S localhost:8000 -t public
+
+open in browser:
+http://localhost:8000/ 
+
+make a controller:
+php bin/console make:controller
+
+im File:  .env : 
+DATABASE_URL="mysql://root:@127.0.0.1:3306/my_project" 
+
+create database
+php bin/console doctrine:database:create
+
+create table:
+php bin/console make:entity
+
+make migration:
+php bin/console make:migration
+
+migration 2nd Command:
+php bin/console doctrine:migrations:migrate
+
+
+when you add something to the table:
+php bin/console doctrine:schema:update --force
+
+filter:
+$events = $this->getDoctrine()->getRepository(Events::class)->findBy(['type' => $filter]);
+
+date styling:
+<div>
+    <p> Date: {{event.dateTime | date('d/m/Y ')}} </p>
+    <p> Time: {{event.dateTime | date('H:i')}} </p>
+</div>
+
+delete confirmation:
+onclick="return confirm('Are you sure you want to delete this?')"
+
+CRUD mit 1 Zeile erstellen:
+php bin/console make:crud
+
+Run this command to install the security feature before using it, we are using this bundle to make the login:
+composer require symfony/security-bundle
+
+create the table from the entity user:
+php bin/console doctrine:schema:update --force
+
+Adding dummy data in the DB using doctrine fixtures
+22:03 Uhr
+composer require --dev doctrine/doctrine-fixtures-bundle
+22:03 Uhr
+php bin/console make:fixtures
+
+
+import external database to existig project:
+
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity
+php bin/console make:entity --regenerate App
+
+von git geklont installieren:
+composer install
+
+composer updaten:
+composer update
+
+get symfony version:
+php bin/console --version
+
+
+
